@@ -1,3 +1,6 @@
+package com.nighthawk.spring_portfolio.mvc.calendar;
+import java.util.*;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -26,7 +29,10 @@ public class APCalender {
     */
     private static int firstDayOfYear(int year) {
         // implementation not shown
-        
+        Date currentDate = new Date(year-1900, 0, 1);
+
+        return currentDate.getDay();
+        /*
         int i = year;
         ArrayList<String> name = new ArrayList<String>();
         name.add("Sunday");
@@ -91,6 +97,7 @@ public class APCalender {
             }
         }
         return 0;
+        */
 
         //String[] name = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}; 
         
@@ -110,15 +117,15 @@ public class APCalender {
         getday.put(1, 0);
         getday.put(2, 31);
         getday.put(3, 59);
-        getday.put(4, 89);
+        getday.put(4, 90);
         getday.put(5, 120);
-        getday.put(6, 150);
+        getday.put(6, 151);
         getday.put(7, 181);
-        getday.put(8, 211);
-        getday.put(9, 242);
-        getday.put(10, 272);
-        getday.put(11, 303);
-        getday.put(12, 333);
+        getday.put(8, 212);
+        getday.put(9, 243);
+        getday.put(10, 273);
+        getday.put(11, 304);
+        getday.put(12, 334);
 
         if (isLeapYear(year) && month >= 3) {
             return getday.get(month) + day + 1;
@@ -133,16 +140,24 @@ public class APCalender {
     */ 
     public static int numberOfLeapYears(int year1, int year2) {
          // to be implemented in part (a)
-        
-        return 0;
+        int num = 0;
+
+        for (int i = year1; i <= year2; int year2) {
+            if (isLeapYear(i)) {
+                num++;
+            }
         }
+        return num;
+    }
 
     /** Returns the value representing the day of the week for the given date
      * Precondition: The date represented by month, day, year is a valid date.
     */
     public static int dayOfWeek(int month, int day, int year) { 
         // to be implemented in part (b)
-        return 0;
+        Date today = new Date(year-1900, month-1, day);
+
+        return today.getDay();
         }
 
     /** Tester method */
